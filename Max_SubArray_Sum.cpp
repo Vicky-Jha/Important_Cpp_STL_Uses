@@ -10,18 +10,13 @@
 #include <vector>
 using namespace std;
 
-int maxSubArray(const vector<int> &A) {
-    int n = A.size();
-    if(!n)
-        return 0;
-    int curSum = 0, maxSum = INT_MIN;
-    for (int i = 0; i < n; i++) {
-        curSum += A[i];
-        maxSum = max(maxSum,
-                     curSum);
-        if (curSum < 0) curSum = 0;
-    }
-    return maxSum;
+int maxSubArray(vector< int >& nums) {
+         int res = INT_MIN, curSum = 0 ;
+         for ( int num: nums) {
+            curSum = max(curSum + num, num);
+            res = max(res, curSum);
+        }
+        return res;
 }
 
 int main(int argc, const char * argv[]) {
